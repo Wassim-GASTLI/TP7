@@ -39,4 +39,35 @@ console.log("somme : "+notes.reduce((acc,n)=>acc+n,0))
 console.log("sur100 : "+notes.map((n) => n *5 ))
 console.log("moyenne : "+((notes.reduce((acc,n)=>acc+n,0)/notes.length)).toFixed(2))
 
+console.log("----Exercice 4----")
+const membre = {
+    prenom: "Sarra",
+    age: 19,
+    ateliers: ["HTML", "CSS"],
+    cotisationPayee: false,
+    sePresenter() {
+        return `Je suis ${this.prenom}, ${this.age} ans, inscrite à ${this.ateliers.length} ateliers : ${this.ateliers.join(", ")}.`;
+    }
+};
+membre.email = `${membre.prenom.toLowerCase()}@gmail.com`;
+
+console.log(membre.prenom, "/", membre["age"]);
+for (const propriete in membre) {
+    if (typeof membre[propriete] !== "function") {
+        console.log(`${propriete} : ${membre[propriete]}`);
+    }
+}
+console.log(membre.sePresenter());
+
+const membres = [
+    { prenom: "Sarra", age: 19, cotisationPayee: true },
+    { prenom: "Ali", age: 22, cotisationPayee: false },
+    { prenom: "Yasmine", age: 18, cotisationPayee: true }
+];
+
+console.log("Prénoms :", membres.map((membre) => membre.prenom));
+console.log("Prénoms non payés :", membres.filter((membre) => membre.cotisationPayee == false).map((membre) => membre.prenom));
+const membreYasmine = membres.find((membre) => membre.prenom === "Yasmine");
+console.log("Âge de Yasmine :", membreYasmine.age);
+console.table(membres);
 
